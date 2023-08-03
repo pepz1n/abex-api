@@ -39,24 +39,6 @@ const get = async (req, res) => {
   }
 };
 
-const persist = async (req, res) => {
-  try {
-    const id = req.params.id ? req.params.id.toString().replace(/\D/g, '') : null;
-
-    if (!id) {
-      return await create(req.body, res);
-    }
-
-    return await update(id, req.body, res);
-  } catch (error) {
-    return res.status(200).send({
-      type: 'error',
-      message: 'Ops! Ocorreu um erro',
-      error,
-    });
-  }
-};
-
 const create = async (dados, res) => {
   const { description, color, inactive } = dados;
 
@@ -92,6 +74,24 @@ const update = async (id, dados, res) => {
     message: `Registro id ${id} atualizado com sucesso`,
     data: response,
   });
+};
+
+const persist = async (req, res) => {
+  try {
+    const id = req.params.id ? req.params.id.toString().replace(/\D/g, '') : null;
+
+    if (!id) {
+      return await create(req.body, res);
+    }
+
+    return await update(id, req.body, res);
+  } catch (error) {
+    return res.status(200).send({
+      type: 'error',
+      message: 'Ops! Ocorreu um erro',
+      error,
+    });
+  }
 };
 
 const destroy = async (req, res) => {
