@@ -1,7 +1,7 @@
-import baseRoute from './baseRoute'
+// import baseRoute from './baseRoute'
 
 function Routes (app) {
-    baseRoute(app);
+    // baseRoute(app);
 }
 
 export default Routes
