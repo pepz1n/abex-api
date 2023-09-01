@@ -8,11 +8,11 @@ const BaseModel = sequelize.define(
         id: {
 			type: DataTypes.INTEGER,
 			primaryKey: true,
-			autoIncrement: true
+			autoIncrement: true,
 		},
     },
     
-    {
+{
         freezeTableName: true,
 		timestamps: true,
 		createdAt: 'created_at',
