@@ -1,4 +1,4 @@
-import institutionModel from '../models/institutionModel';
+import institutionModel from '../models/InstitutionModel';
 
 const get = async (req, res) => {
     

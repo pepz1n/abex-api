@@ -7,4 +7,3 @@ export default (app) => {
   app.get('/institution', controller.get);
   app.get('/institution/:id', controller.get);
 };
-  
