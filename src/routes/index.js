@@ -1,7 +1,7 @@
-import baseRoute from './baseRoute'
+import adressRoute from './adressRoute';
 
-function Routes (app) {
-    baseRoute(app);
+function Routes(app) {
+  adressRoute(app);
 }
 
-export default Routes
+export default Routes;
