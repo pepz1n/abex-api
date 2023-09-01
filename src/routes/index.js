@@ -1,4 +1,4 @@
-import adressRoute from './adressRoute';
+import adressRoute from './addressRoute';
 import institutionRoute from './institutionRoute';
 
 function Routes(app) {
