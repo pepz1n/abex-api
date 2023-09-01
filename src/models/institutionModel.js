@@ -1,14 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../config/config";
-/*
-CREATE TABLE institution(
-    id SERIAL PRIMARY KEY NOT NULL,
-    name VARCHAR(100) NOT NULL,
-    document_number VARCHAR(18) NOT NULL,
-    address_id INTEGER,
-    CONSTRAINT fk_address_to_institution FOREIGN KEY(address_id) REFERENCES address(id)
-);
-*/
+import Address from "./AddressModel";
 
 const Institution = sequelize.define(
     'institution',
@@ -19,13 +11,13 @@ const Institution = sequelize.define(
 			autoIncrement: true
 		},
         name: {
-			type: DataTypes.STRING,
+			type: DataTypes.STRING(100),
             unique: false, 
 			primaryKey: false,
             allowNull: false
 		},
         document_number: {
-			type: DataTypes.STRING,
+			type: DataTypes.STRING(18),
             unique: false, 
 			primaryKey: false,
             allowNull: false
@@ -39,19 +31,19 @@ const Institution = sequelize.define(
     },
     {
         freezeTableName: true,
-		timestamps: true,
+		timestamps: false,
     }
 );
 
-Institution.belongsTo(  Category, {
-    as: 'Category',
+Institution.belongsTo(  Address, {
+    as: 'Address',
     onUpdate: 'NO ACTION',
     onDelete: 'NO ACTION',
     foreignKey: {
-      name: 'idCategory',
+      name: 'address_id',
       allowNull: false,
-      field: 'id_Category'
+      field: 'id'
     }
   })
 
-export default BaseModel;
+export default Institution;
