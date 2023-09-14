@@ -1,7 +1,9 @@
-import baseRoute from './baseRoute'
+import adressRoute from './addressRoute';
+import institutionRoute from './institutionRoute';
 
-function Routes (app) {
-    baseRoute(app);
+function Routes(app) {
+  institutionRoute(app)
+  adressRoute(app);
 }
 
-export default Routes
+export default Routes;

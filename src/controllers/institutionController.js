@@ -1,11 +1,12 @@
-import BaseModel from '../models/BaseModel';
+import institutionModel from '../models/InstitutionModel';
 
 const get = async (req, res) => {
+    
   try {
     const id = req.params.id ? req.params.id.toString().replace(/\D/g, '') : null;
 
     if (!id) {
-      const response = await BaseModel.findAll({
+      const response = await institutionModel.findAll({
         order: [['id', 'asc']],
       });
       return res.status(200).send({
@@ -15,7 +16,7 @@ const get = async (req, res) => {
       });
     }
 
-    const response = await BaseModel.findOne({ where: { id } });
+    const response = await institutionModel.findOne({ where: { id } });
 
     if (!response) {
       return res.status(200).send({
@@ -40,13 +41,9 @@ const get = async (req, res) => {
 };
 
 const create = async (dados, res) => {
-  const { description, color, inactive } = dados;
+  const { name,document_number, address_id } = dados;
 
-  const response = await BaseModel.create({
-    description,
-    color,
-    inactive,
-  });
+  const response = await institutionModel.create({name,document_number, address_id});
 
   return res.status(200).send({
     type: 'success',
@@ -56,7 +53,7 @@ const create = async (dados, res) => {
 };
 
 const update = async (id, dados, res) => {
-  const response = await BaseModel.findOne({ where: { id } });
+  const response = await institutionModel.findOne({ where: { id } });
 
   if (!response) {
     return res.status(200).send({
@@ -105,7 +102,7 @@ const destroy = async (req, res) => {
       });
     }
 
-    const response = await BaseModel.findOne({ where: { id } });
+    const response = await institutionModel.findOne({ where: { id } });
 
     if (!response) {
       return res.status(200).send({
