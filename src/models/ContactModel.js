@@ -1,30 +1,29 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../config/config";
-import Address from "./AddressModel";
+import Institution from "./InstitutionModel";
 
-const Institution = sequelize.define(
-    'institution',
+
+const Contact = sequelize.define(
+    'contact',
     {
-        // Por algum motivo de deus essa tabela da erro, pq ele nao reconhece o id como o PK mas sim o 'institution_id'
-        institution_id: {
+        id: {
 			type: DataTypes.INTEGER,
 			primaryKey: true,
-			autoIncrement: true,
-            field: "id"
+			autoIncrement: true
 		},
-        name: {
-			type: DataTypes.STRING(100),
+        type: {
+			type: DataTypes.STRING(15),
             unique: false, 
 			primaryKey: false,
             allowNull: false
 		},
-        document_number: {
-			type: DataTypes.STRING(18),
+        value: {
+			type: DataTypes.STRING(100),
             unique: true, 
 			primaryKey: false,
             allowNull: false
         },
-        address_id: {
+        institution_id: {
 			type: DataTypes.INTEGER,
             unique: false, 
 			primaryKey: false,
@@ -35,17 +34,18 @@ const Institution = sequelize.define(
         freezeTableName: true,
 		timestamps: false,
     }
-);
 
-Institution.belongsTo(  Address, {
-    as: 'Address',
+)
+
+Contact.belongsTo(  Institution, {
+    as: 'Institution',
     onUpdate: 'NO ACTION',
     onDelete: 'NO ACTION',
     foreignKey: {
-      name: 'address_id',
+      name: 'institution_id',
       allowNull: false,
       field: 'id'
     }
-  })
+})
 
-export default Institution;
+export default Contact;
