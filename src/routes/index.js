@@ -4,10 +4,11 @@ import contactRoute from './contactRoute';
 import personAccountRoute from './personAccountRoute';
 import denunciationRoute from './denunciationRoute';
 import fieldRoute from './fieldRoute';
-import { removeAllListeners } from 'nodemon';
+import permissionRoute from './permissionRoute';
 
 function Routes(app) {
-  institutionRoute(app)
+  institutionRoute(app);
+  permissionRoute(app);
   adressRoute(app);
   contactRoute(app);
   personAccountRoute(app);
