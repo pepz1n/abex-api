@@ -1,15 +1,13 @@
-import institutionModel from '../models/InstitutionModel';
+import PersonAccount from '../models/PersonAccountModel';
 
 const get = async (req, res) => {
-    
   try {
     const id = req.params.id ? req.params.id.toString().replace(/\D/g, '') : null;
 
     if (!id) {
-      const response = await institutionModel.findAll({
+      const response = await PersonAccount.findAll({
         order: [['id', 'asc']],
       });
-      console.log(response)
       return res.status(200).send({
         type: 'success',
         message: 'Registros carregados com sucesso',
@@ -17,7 +15,7 @@ const get = async (req, res) => {
       });
     }
 
-    const response = await institutionModel.findOne({ where: { id } });
+    const response = await PersonAccount.findOne({ where: { id } });
 
     if (!response) {
       return res.status(200).send({
@@ -42,9 +40,21 @@ const get = async (req, res) => {
 };
 
 const create = async (dados, res) => {
-  const { name,document_number, address_id } = dados;
+  const { 
+      name,
+      document_number,
+      username,
+      hash,
+      institution_id
+    } = dados;
 
-  const response = await institutionModel.create({name,document_number, address_id});
+  const response = await PersonAccount.create({
+      name,
+      document_number,
+      username,
+      hash,
+      institution_id
+  });
 
   return res.status(200).send({
     type: 'success',
@@ -54,7 +64,7 @@ const create = async (dados, res) => {
 };
 
 const update = async (id, dados, res) => {
-  const response = await institutionModel.findOne({ where: { id } });
+  const response = await PersonAccount.findOne({ where: { id } });
 
   if (!response) {
     return res.status(200).send({
@@ -103,7 +113,7 @@ const destroy = async (req, res) => {
       });
     }
 
-    const response = await institutionModel.findOne({ where: { id } });
+    const response = await PersonAccount.findOne({ where: { id } });
 
     if (!response) {
       return res.status(200).send({
