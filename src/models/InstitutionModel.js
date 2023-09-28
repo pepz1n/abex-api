@@ -5,12 +5,10 @@ import Address from "./AddressModel";
 const Institution = sequelize.define(
     'institution',
     {
-        // Por algum motivo de deus essa tabela da erro, pq ele nao reconhece o id como o PK mas sim o 'institution_id'
-        institution_id: {
+        id: {
 			type: DataTypes.INTEGER,
 			primaryKey: true,
-			autoIncrement: true,
-            field: "id"
+			autoIncrement: true
 		},
         name: {
 			type: DataTypes.STRING(100),
@@ -20,7 +18,7 @@ const Institution = sequelize.define(
 		},
         document_number: {
 			type: DataTypes.STRING(18),
-            unique: true, 
+            unique: false, 
 			primaryKey: false,
             allowNull: false
         },

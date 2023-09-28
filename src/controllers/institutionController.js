@@ -9,7 +9,6 @@ const get = async (req, res) => {
       const response = await institutionModel.findAll({
         order: [['id', 'asc']],
       });
-      console.log(response)
       return res.status(200).send({
         type: 'success',
         message: 'Registros carregados com sucesso',
