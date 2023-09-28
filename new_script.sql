@@ -59,7 +59,8 @@ CREATE TABLE field(
     status BOOLEAN NOT NULL
 );
 
-Alter table field add column higher integer;
+alter table field add column higher integer not null;
+alter table field add CONSTRAINT fk_field_to_field FOREIGN KEY (higher) REFERENCES field;
 
 CREATE TABLE response_field(
     id SERIAL PRIMARY KEY NOT NULL,
