@@ -33,6 +33,11 @@ const Field = sequelize.define(
 			primaryKey: false,
             allowNull: true,
         },
+        label: {
+			type: DataTypes.STRING(200),
+            unique: false, 
+            allowNull: true,
+        },
         higher: {
 			type: DataTypes.INTEGER,
             unique: false, 

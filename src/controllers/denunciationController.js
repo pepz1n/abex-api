@@ -43,15 +43,15 @@ const create = async (dados, res) => {
   const { 
     date,
     status,
-    created_user_id,
-    responsible_user_id
+    createdUserId,
+    responsibleUserId
     } = dados;
 
   const response = await Denunciation.create({
     date,
     status,
-    created_user_id,
-    responsible_user_id
+    createdUserId,
+    responsibleUserId
   });
 
   return res.status(200).send({

@@ -22,13 +22,15 @@ const Denunciation = sequelize.define(
       primaryKey: false,
       allowNull: true,
     },
-    created_user_id: {
+    createdUserId: {
+      field: "created_user_id",
       type: DataTypes.INTEGER,
       unique: false,
       primaryKey: false,
       allowNull: false,
     },
-    responsible_user_id: {
+    responsibleUserId: {
+      field: "responsible_user_id",
       type: DataTypes.INTEGER,
       unique: false,
       primaryKey: false,
@@ -47,7 +49,7 @@ Denunciation.belongsTo(PersonAccount, {
   onUpdate: 'NO ACTION',
   onDelete: 'NO ACTION',
   foreignKey: {
-    name: 'created_user_id',
+    name: 'createdUserId',
     allowNull: false,
     field: 'id',
   },
@@ -58,7 +60,7 @@ Denunciation.belongsTo(PersonAccount, {
   onUpdate: 'NO ACTION',
   onDelete: 'NO ACTION',
   foreignKey: {
-    name: 'responsible_user_id',
+    name: 'responsibleUserId',
     allowNull: false,
     field: 'id',
   },

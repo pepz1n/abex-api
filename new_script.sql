@@ -55,12 +55,12 @@ CREATE TABLE field(
     id SERIAL PRIMARY KEY NOT NULL,
     name VARCHAR(40) NOT NULL,
     type VARCHAR(40) NOT NULL,
-    options JSON NOT NULL,
+    options JSONB NOT NULL,
+    label VARCHAR(200) NOT NULL,
+    higher integer not null
     status BOOLEAN NOT NULL
+    CONSTRAINT fk_field_to_field FOREIGN KEY (higher) REFERENCES field(id);
 );
-
-alter table field add column higher integer not null;
-alter table field add CONSTRAINT fk_field_to_field FOREIGN KEY (higher) REFERENCES field;
 
 CREATE TABLE response_field(
     id SERIAL PRIMARY KEY NOT NULL,

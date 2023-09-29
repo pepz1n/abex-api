@@ -42,9 +42,9 @@ const get = async (req, res) => {
 };
 
 const create = async (dados, res) => {
-  const { name,document_number, address_id } = dados;
+  const { name,documentNumber, addressId } = dados;
 
-  const response = await institutionModel.create({name,document_number, address_id});
+  const response = await institutionModel.create({name,documentNumber, addressId});
 
   return res.status(200).send({
     type: 'success',

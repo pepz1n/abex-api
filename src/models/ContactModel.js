@@ -22,7 +22,8 @@ const Contact = sequelize.define(
       primaryKey: false,
       allowNull: false,
     },
-    institution_id: {
+    institutionId: {
+      field: 'institution_id',
       type: DataTypes.INTEGER,
       unique: false,
       primaryKey: false,
@@ -41,7 +42,7 @@ Contact.belongsTo(Institution, {
   onUpdate: 'NO ACTION',
   onDelete: 'NO ACTION',
   foreignKey: {
-    name: 'institution_id',
+    name: 'institutionId',
     allowNull: false,
     field: 'id',
   },
