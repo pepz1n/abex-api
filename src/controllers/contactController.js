@@ -43,13 +43,13 @@ const create = async (dados, res) => {
   const { 
       type,
       value,
-      institution_id
+      institutionId
     } = dados;
 
   const response = await Contact.create({
       type,
       value,
-      institution_id
+      institutionId
   });
 
   return res.status(200).send({

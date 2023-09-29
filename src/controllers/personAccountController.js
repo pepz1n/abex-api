@@ -42,18 +42,18 @@ const get = async (req, res) => {
 const create = async (dados, res) => {
   const { 
       name,
-      document_number,
+      documentNumber,
       username,
       hash,
-      institution_id
+      institutionId
     } = dados;
 
   const response = await PersonAccount.create({
       name,
-      document_number,
+      documentNumber,
       username,
       hash,
-      institution_id
+      institutionId
   });
 
   return res.status(200).send({

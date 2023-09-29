@@ -45,6 +45,7 @@ const create = async (dados, res) => {
       type,
       options,
       status,
+      label,
       higher
     } = dados;
 
@@ -53,6 +54,7 @@ const create = async (dados, res) => {
     type,
     options,
     status,
+    label,
     higher
   });
 

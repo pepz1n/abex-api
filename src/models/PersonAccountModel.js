@@ -16,7 +16,8 @@ const PersonAccount = sequelize.define(
       primaryKey: false,
       allowNull: false,
     },
-    document_number: {
+    documentNumber: {
+      field: "document_number",
       type: DataTypes.STRING(18),
       unique: true,
       primaryKey: false,
@@ -34,7 +35,8 @@ const PersonAccount = sequelize.define(
       primaryKey: false,
       allowNull: false,
     },
-    institution_id: {
+    institutionId: {
+      field: "institution_id",
       type: DataTypes.INTEGER,
       unique: false,
       primaryKey: false,
@@ -53,7 +55,7 @@ PersonAccount.belongsTo(Institution, {
   onUpdate: 'NO ACTION',
   onDelete: 'NO ACTION',
   foreignKey: {
-    name: 'institution_id',
+    name: 'institutionId',
     allowNull: false,
     field: 'id',
   },
