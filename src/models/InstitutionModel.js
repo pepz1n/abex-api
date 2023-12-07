@@ -17,16 +17,9 @@ const Institution = sequelize.define(
       allowNull: false,
     },
     documentNumber: {
-      field: "document_number",
+      field: 'document_number',
       type: DataTypes.STRING(18),
       unique: true,
-      primaryKey: false,
-      allowNull: false,
-    },
-    addressId: {
-      field: "address_id",
-      type: DataTypes.INTEGER,
-      unique: false,
       primaryKey: false,
       allowNull: false,
     },
