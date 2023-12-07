@@ -38,6 +38,11 @@ const Field = sequelize.define(
             unique: false, 
             allowNull: true,
         },
+        cols: {
+			type: DataTypes.STRING(200),
+            unique: false, 
+            allowNull: true,
+        },
         higher: {
 			type: DataTypes.INTEGER,
             unique: false, 

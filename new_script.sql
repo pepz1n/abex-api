@@ -57,15 +57,16 @@ CREATE TABLE field(
     type VARCHAR(40) NOT NULL,
     options JSONB NOT NULL,
     label VARCHAR(200) NOT NULL,
-    higher integer not null
-    status BOOLEAN NOT NULL
-    CONSTRAINT fk_field_to_field FOREIGN KEY (higher) REFERENCES field(id);
+    cols VARCHAR(200) NOT NULL,
+    higher integer,
+    status BOOLEAN NOT NULL,
+    CONSTRAINT fk_field_to_field FOREIGN KEY (higher) REFERENCES field(id)
 );
 
 CREATE TABLE response_field(
     id SERIAL PRIMARY KEY NOT NULL,
     value VARCHAR(100) NOT NULL,
-    field_id INTEGER NOT NULL,
+    field_id INTEGER,
     denunciation_id INTEGER NOT NULL,
     CONSTRAINT fk_denunciation_to_response_field FOREIGN KEY(denunciation_id) REFERENCES denunciation(id),
     CONSTRAINT fk_field_to_response_field FOREIGN KEY(field_id) REFERENCES field(id)

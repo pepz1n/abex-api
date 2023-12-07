@@ -40,14 +40,15 @@ const get = async (req, res) => {
 };
 
 const create = async (dados, res) => {
-  const { 
-      name,
-      type,
-      options,
-      status,
-      label,
-      higher
-    } = dados;
+  const {
+    name,
+    type,
+    options,
+    status,
+    label,
+    higher,
+    cols,
+  } = dados;
 
   const response = await Field.create({
     name,
@@ -55,7 +56,8 @@ const create = async (dados, res) => {
     options,
     status,
     label,
-    higher
+    higher,
+    cols,
   });
 
   return res.status(200).send({
