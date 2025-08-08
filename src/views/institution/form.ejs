@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= institution ? 'Edit' : 'Create' %> Institution</title>
+</head>
+<body>
+  <h1><%= institution ? 'Edit' : 'Create' %> Institution</h1>
+  <form method="post" action="<%= institution ? '/institution/persist/' + institution.id : '/institution/persist' %>">
+    <div>
+      <label>Name:</label>
+      <input type="text" name="name" value="<%= institution ? institution.name : '' %>" required>
+    </div>
+    <div>
+      <label>Document Number:</label>
+      <input type="text" name="document_number" value="<%= institution ? institution.document_number : '' %>" required>
+    </div>
+    <div>
+      <label>Address ID:</label>
+      <input type="number" name="address_id" value="<%= institution ? institution.address_id : '' %>" required>
+    </div>
+    <button type="submit">Save</button>
+  </form>
+  <a href="/institution/view">Back</a>
+</body>
+</html>
