@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cadastro de Endereço</title>
+</head>
+<body>
+  <h1>Cadastro de Endereço</h1>
+  <form id="addressForm">
+    <label>País: <input type="text" name="country" required /></label><br/>
+    <label>Estado: <input type="text" name="state" required /></label><br/>
+    <label>Cidade: <input type="text" name="city" required /></label><br/>
+    <label>Bairro: <input type="text" name="neighborhood" required /></label><br/>
+    <label>Rua: <input type="text" name="street" required /></label><br/>
+    <label>CEP: <input type="text" name="postalCode" /></label><br/>
+    <button type="submit">Salvar</button>
+  </form>
+  <div id="result"></div>
+  <script>
+    document.getElementById('addressForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const payload = Object.fromEntries(formData.entries());
+      try {
+        const response = await fetch('/address/persist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await response.json();
+        document.getElementById('result').textContent = data.message || 'Erro ao cadastrar';
+      } catch (err) {
+        document.getElementById('result').textContent = 'Erro ao conectar com o servidor';
+      }
+    });
+  </script>
+</body>
+</html>
