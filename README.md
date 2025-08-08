@@ -20,4 +20,14 @@
   * ```
     npm run dev
     ```
+
+## Banco de teste
+
+O arquivo `test_db.sql` cria tabelas de fornecedores (`supplier`) e produtos (`product`) com alguns dados de exemplo para testes.
+
+Para carregar esse banco no PostgreSQL local utilize:
+
+```
+psql -U postgres -d arni-api -f test_db.sql
+```
     
