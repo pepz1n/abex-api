@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= address ? 'Edit' : 'Create' %> Address</title>
+</head>
+<body>
+  <h1><%= address ? 'Edit' : 'Create' %> Address</h1>
+  <form method="post" action="<%= address ? '/address/persist/' + address.id : '/address/persist' %>">
+    <div>
+      <label>Country:</label>
+      <input type="text" name="country" value="<%= address ? address.country : '' %>" required>
+    </div>
+    <div>
+      <label>State:</label>
+      <input type="text" name="state" value="<%= address ? address.state : '' %>" required>
+    </div>
+    <div>
+      <label>City:</label>
+      <input type="text" name="city" value="<%= address ? address.city : '' %>" required>
+    </div>
+    <div>
+      <label>Neighborhood:</label>
+      <input type="text" name="neighborhood" value="<%= address ? address.neighborhood : '' %>" required>
+    </div>
+    <div>
+      <label>Street:</label>
+      <input type="text" name="street" value="<%= address ? address.street : '' %>" required>
+    </div>
+    <div>
+      <label>Postal Code:</label>
+      <input type="text" name="postalCode" value="<%= address ? address.postalCode : '' %>">
+    </div>
+    <button type="submit">Save</button>
+  </form>
+  <a href="/address/view">Back</a>
+</body>
+</html>

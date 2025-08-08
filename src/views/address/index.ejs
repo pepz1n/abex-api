@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Addresses</title>
+</head>
+<body>
+  <h1>Addresses</h1>
+  <a href="/address/view/create">Create Address</a>
+  <ul>
+    <% addresses.forEach(function(addr) { %>
+      <li>
+        <%= addr.street %>, <%= addr.city %> - 
+        <a href="/address/view/edit/<%= addr.id %>">Edit</a>
+        <form method="post" action="/address/destroy" style="display:inline">
+          <input type="hidden" name="id" value="<%= addr.id %>">
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+    <% }); %>
+  </ul>
+</body>
+</html>
