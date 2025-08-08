@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cadastro de Instituição</title>
+</head>
+<body>
+  <h1>Cadastro de Instituição</h1>
+  <form id="institutionForm">
+    <label>Nome: <input type="text" name="name" required /></label><br/>
+    <label>Documento: <input type="text" name="document_number" required /></label><br/>
+    <label>ID do Endereço: <input type="number" name="address_id" required /></label><br/>
+    <button type="submit">Salvar</button>
+  </form>
+  <div id="result"></div>
+  <script>
+    document.getElementById('institutionForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const payload = Object.fromEntries(formData.entries());
+      try {
+        const response = await fetch('/institution/persist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await response.json();
+        document.getElementById('result').textContent = data.message || 'Erro ao cadastrar';
+      } catch (err) {
+        document.getElementById('result').textContent = 'Erro ao conectar com o servidor';
+      }
+    });
+  </script>
+</body>
+</html>
