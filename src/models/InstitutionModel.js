@@ -35,15 +35,15 @@ const Institution = sequelize.define(
     }
 );
 
-Institution.belongsTo(  Address, {
-    as: 'Address',
-    onUpdate: 'NO ACTION',
-    onDelete: 'NO ACTION',
-    foreignKey: {
-      name: 'address_id',
-      allowNull: false,
-      field: 'id'
-    }
-  })
+Institution.belongsTo(Address, {
+  as: 'Address',
+  onUpdate: 'NO ACTION',
+  onDelete: 'NO ACTION',
+  foreignKey: {
+    name: 'address_id',
+    allowNull: false,
+  },
+});
+
 
 export default Institution;
