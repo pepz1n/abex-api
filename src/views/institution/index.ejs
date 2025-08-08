@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Institutions</title>
+</head>
+<body>
+  <h1>Institutions</h1>
+  <a href="/institution/view/create">Create Institution</a>
+  <ul>
+    <% institutions.forEach(function(inst) { %>
+      <li>
+        <%= inst.name %> - 
+        <a href="/institution/view/edit/<%= inst.id %>">Edit</a>
+        <form method="post" action="/institution/destroy" style="display:inline">
+          <input type="hidden" name="id" value="<%= inst.id %>">
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+    <% }); %>
+  </ul>
+</body>
+</html>

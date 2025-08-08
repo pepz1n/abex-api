@@ -8,6 +8,8 @@ import fileupload from 'express-fileupload';
 import routes from './routes';
 
 const app = express();
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 const accessLogStream = fs.createWriteStream(
   path.join(__dirname, '../access.log'),

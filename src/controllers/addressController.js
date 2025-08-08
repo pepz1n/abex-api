@@ -39,6 +39,24 @@ const get = async (req, res) => {
   }
 };
 
+const listView = async (req, res) => {
+  const addresses = await AdressModel.findAll({
+    order: [['id', 'asc']],
+  });
+  return res.render('address/index', { addresses });
+};
+
+const createView = (req, res) => res.render('address/form', { address: null });
+
+const editView = async (req, res) => {
+  const id = req.params.id ? req.params.id.toString().replace(/\D/g, '') : null;
+  const address = await AdressModel.findOne({ where: { id } });
+  if (!address) {
+    return res.status(404).send('Address not found');
+  }
+  return res.render('address/form', { address });
+};
+
 const create = async (dados, res) => {
   const {
     country, state, city, neighborhood, street, postalCode,
@@ -139,4 +157,7 @@ export default {
   get,
   persist,
   destroy,
+  listView,
+  createView,
+  editView,
 };

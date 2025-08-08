@@ -40,6 +40,24 @@ const get = async (req, res) => {
   }
 };
 
+const listView = async (req, res) => {
+  const institutions = await institutionModel.findAll({
+    order: [['id', 'asc']],
+  });
+  return res.render('institution/index', { institutions });
+};
+
+const createView = (req, res) => res.render('institution/form', { institution: null });
+
+const editView = async (req, res) => {
+  const id = req.params.id ? req.params.id.toString().replace(/\D/g, '') : null;
+  const institution = await institutionModel.findOne({ where: { id } });
+  if (!institution) {
+    return res.status(404).send('Institution not found');
+  }
+  return res.render('institution/form', { institution });
+};
+
 const create = async (dados, res) => {
   const { name,document_number, address_id } = dados;
 
@@ -131,4 +149,7 @@ export default {
   get,
   persist,
   destroy,
+  listView,
+  createView,
+  editView,
 };
